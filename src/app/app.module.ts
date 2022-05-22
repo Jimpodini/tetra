@@ -9,9 +9,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { ThemeIconComponent } from './svgs/theme-icon/theme-icon.component';
+import { ToolbarIconsComponent } from './toolbar-icons/toolbar-icons.component';
+import { ThemeService } from './services/theme.service';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ThemeIconComponent, ToolbarIconsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,8 +26,10 @@ import { MatListModule } from '@angular/material/list';
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
+    MatMenuModule,
+    MatRadioModule,
   ],
-  providers: [],
+  providers: [ThemeService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
