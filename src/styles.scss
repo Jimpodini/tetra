@@ -60,6 +60,20 @@ $tetra-theme: mat.define-light-theme(
 // that you are using.
 @include mat.all-component-themes($tetra-theme);
 
+$tetra-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $tetra-primary,
+      accent: $tetra-accent,
+      warn: $tetra-warn,
+    ),
+  )
+);
+
+.darkMode {
+  @include mat.all-component-themes($tetra-dark-theme);
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 html,
@@ -69,4 +83,8 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-sidenav.primary {
+  background-color: mat.get-color-from-palette($primary-palette, 500);
 }
