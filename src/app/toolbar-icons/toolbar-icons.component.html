@@ -1,0 +1,46 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu"
+  aria-label="Example icon-button with a menu"
+>
+  <mat-icon>format_color_fill</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <mat-nav-list style="min-width: 112px; max-width: 280px; padding-top: 0">
+    <mat-radio-group
+      [value]="themeService.themeObservable$ | async"
+      aria-label="Select an option"
+    >
+      <button mat-list-item (click)="themeService.switchTheme('primary')">
+        <div style="width: 100%">
+          <mat-radio-button
+            class="mr-2 align-middle"
+            value="primary"
+          ></mat-radio-button>
+          <span class="align-middle">Primary</span>
+          <app-theme-icon class="ml-4 float-right"></app-theme-icon>
+        </div>
+      </button>
+      <button mat-list-item (click)="themeService.switchTheme('light')">
+        <div style="width: 100%">
+          <mat-radio-button
+            class="mr-2 align-middle"
+            value="light"
+          ></mat-radio-button>
+          <span class="align-middle">Light</span>
+          <app-theme-icon class="ml-4 float-right"></app-theme-icon>
+        </div>
+      </button>
+      <button mat-list-item (click)="themeService.switchTheme('dark')">
+        <div style="width: 100%">
+          <mat-radio-button
+            class="mr-2 align-middle"
+            value="dark"
+          ></mat-radio-button>
+          <span class="align-middle">Dark</span>
+          <app-theme-icon class="ml-4 float-right"></app-theme-icon>
+        </div>
+      </button>
+    </mat-radio-group>
+  </mat-nav-list>
+</mat-menu>
