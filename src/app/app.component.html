@@ -16,14 +16,26 @@
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
       [opened]="!mobileQuery.matches"
+      class="primary"
     >
+      <img
+        [src]="
+          '/assets/logo_' +
+          ((themeService.themeObservable$ | async) === 'primary'
+            ? 'white'
+            : 'primary') +
+          '.png'
+        "
+        class="p-2"
+      />
       <mat-nav-list>
         <a mat-list-item routerLink=".">Test</a>
       </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
-      <p>Content</p>
+      <h1 class="text-3xl font-bold underline">Hello world!!</h1>
+      <app-toolbar-icons class="absolute right-0 top-0"></app-toolbar-icons>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
