@@ -29,3 +29,7 @@
 mat-sidenav {
   width: 300px;
 }
+
+mat-sidenav.primary ::ng-deep .mat-list-item-content {
+  color: white;
+}
