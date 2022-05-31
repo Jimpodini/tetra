@@ -33,15 +33,27 @@
         [ngStyle]="{ marginTop: mobileQuery.matches ? '56px' : '0px' }"
       />
       <mat-nav-list>
-        <div class="m-5">
+        <div class="m-1">
+          <a class="rounded-xl" mat-list-item routerLink=".">Test</a>
+        </div>
+        <div class="m-1">
+          <a class="rounded-xl" mat-list-item routerLink=".">Test</a>
+        </div>
+        <div class="m-1">
           <a class="rounded-xl" mat-list-item routerLink=".">Test</a>
         </div>
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content
+      class="p-5"
+      [ngStyle]="{ marginTop: mobileQuery.matches ? '56px' : '0px' }"
+    >
       <h1 class="text-3xl font-bold underline">Hello world!!</h1>
-      <app-toolbar-icons class="absolute right-0 top-0"></app-toolbar-icons>
+      <app-toolbar-icons
+        *ngIf="!mobileQuery.matches"
+        class="absolute right-0 top-0"
+      ></app-toolbar-icons>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
