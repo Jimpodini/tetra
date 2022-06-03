@@ -18,7 +18,9 @@
             value="primary"
           ></mat-radio-button>
           <span class="align-middle">Primary</span>
-          <app-theme-icon class="ml-4 float-right"></app-theme-icon>
+          <app-theme-icon
+            class="ml-4 float-right theme-primary"
+          ></app-theme-icon>
         </div>
       </button>
       <button mat-list-item (click)="themeService.switchTheme('light')">
@@ -28,7 +30,7 @@
             value="light"
           ></mat-radio-button>
           <span class="align-middle">Light</span>
-          <app-theme-icon class="ml-4 float-right"></app-theme-icon>
+          <app-theme-icon class="ml-4 float-right theme-light"></app-theme-icon>
         </div>
       </button>
       <button mat-list-item (click)="themeService.switchTheme('dark')">
@@ -38,7 +40,7 @@
             value="dark"
           ></mat-radio-button>
           <span class="align-middle">Dark</span>
-          <app-theme-icon class="ml-4 float-right"></app-theme-icon>
+          <app-theme-icon class="ml-4 float-right theme-dark"></app-theme-icon>
         </div>
       </button>
     </mat-radio-group>
