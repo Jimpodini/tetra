@@ -50,6 +50,7 @@
       [ngStyle]="{ marginTop: mobileQuery.matches ? '56px' : '0px' }"
     >
       <h1 class="text-3xl font-bold underline">Hello world!!</h1>
+      <app-cms-box></app-cms-box>
       <app-toolbar-icons
         *ngIf="!mobileQuery.matches"
         class="absolute right-0 top-0"

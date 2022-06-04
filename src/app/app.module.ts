@@ -14,9 +14,15 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ThemeIconComponent } from './svgs/theme-icon/theme-icon.component';
 import { ToolbarIconsComponent } from './toolbar-icons/toolbar-icons.component';
 import { ThemeService } from './services/theme.service';
+import { CmsBoxComponent } from './components/cms-box/cms-box.component';
 
 @NgModule({
-  declarations: [AppComponent, ThemeIconComponent, ToolbarIconsComponent],
+  declarations: [
+    AppComponent,
+    ThemeIconComponent,
+    ToolbarIconsComponent,
+    CmsBoxComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
