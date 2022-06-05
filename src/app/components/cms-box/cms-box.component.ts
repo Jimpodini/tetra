@@ -5,16 +5,11 @@ import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
   templateUrl: './cms-box.component.html',
   styleUrls: ['./cms-box.component.scss'],
 })
-export class CmsBoxComponent implements OnInit {
-  @HostListener('mouseover') onMouseOver() {
+export class CmsBoxComponent {
+  @HostListener('click') onMouseOver() {
     this.editMode = true;
   }
-  @HostListener('mouseout') onMouseOut() {
-    this.editMode = false;
-  }
-  @HostBinding('class.editMode') editMode = true;
+  @HostBinding('class.editMode') editMode = false;
 
   constructor() {}
-
-  ngOnInit(): void {}
 }
