@@ -2,5 +2,10 @@
   <p #textArea>cms-box works!</p>
 </div>
 <div *ngIf="editMode" class="cms-buttons">
-  <div class="editButton">E</div>
+  <button class="editButton drop-shadow-md" (click)="editText($event)">
+    E
+  </button>
+  <button class="editButton drop-shadow-md" (click)="editText($event)">
+    E
+  </button>
 </div>

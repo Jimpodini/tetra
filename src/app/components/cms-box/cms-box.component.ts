@@ -34,6 +34,11 @@ export class CmsBoxComponent implements OnDestroy {
     );
   }
 
+  editText(event: MouseEvent) {
+    event.stopPropagation();
+    console.log(event);
+  }
+
   ngOnDestroy(): void {
     this.listenerFunction();
   }
