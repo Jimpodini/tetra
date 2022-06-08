@@ -7,6 +7,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-cms-box',
@@ -22,7 +23,7 @@ export class CmsBoxComponent implements OnDestroy {
   }
   @HostBinding('class.editMode') editMode = false;
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, public dialog: MatDialog) {
     this.listenerFunction = this.renderer.listen(
       'window',
       'click',
@@ -36,10 +37,27 @@ export class CmsBoxComponent implements OnDestroy {
 
   editText(event: MouseEvent) {
     event.stopPropagation();
+    this.dialog.open(DialogElementsExampleDialogComponent);
     console.log(event);
   }
+
+  openDialog() {}
 
   ngOnDestroy(): void {
     this.listenerFunction();
   }
 }
+
+@Component({
+  selector: 'app-dialog-elements-example-dialog',
+  template: `
+    <h1 mat-dialog-title>Dialog with elements</h1>
+    <div mat-dialog-content>
+      This dialog showcases the title, close, content and actions elements.
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>Close</button>
+    </div>
+  `,
+})
+export class DialogElementsExampleDialogComponent {}

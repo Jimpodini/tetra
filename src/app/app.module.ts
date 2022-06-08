@@ -11,10 +11,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ThemeIconComponent } from './svgs/theme-icon/theme-icon.component';
 import { ToolbarIconsComponent } from './toolbar-icons/toolbar-icons.component';
 import { ThemeService } from './services/theme.service';
-import { CmsBoxComponent } from './components/cms-box/cms-box.component';
+import {
+  CmsBoxComponent,
+  DialogElementsExampleDialogComponent,
+} from './components/cms-box/cms-box.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,7 @@ import { CmsBoxComponent } from './components/cms-box/cms-box.component';
     ThemeIconComponent,
     ToolbarIconsComponent,
     CmsBoxComponent,
+    DialogElementsExampleDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +39,7 @@ import { CmsBoxComponent } from './components/cms-box/cms-box.component';
     MatListModule,
     MatMenuModule,
     MatRadioModule,
+    MatDialogModule,
   ],
   providers: [ThemeService],
   bootstrap: [AppComponent],
