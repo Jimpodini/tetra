@@ -12,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { ThemeIconComponent } from './svgs/theme-icon/theme-icon.component';
 import { ToolbarIconsComponent } from './toolbar-icons/toolbar-icons.component';
 import { ThemeService } from './services/theme.service';
@@ -40,8 +41,12 @@ import {
     MatMenuModule,
     MatRadioModule,
     MatDialogModule,
+    EditorModule,
   ],
-  providers: [ThemeService],
+  providers: [
+    ThemeService,
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

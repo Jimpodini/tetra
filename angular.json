@@ -32,6 +32,11 @@
                 "glob": "**/*",
                 "input": "src/clients/client_A/assets",
                 "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/tinymce",
+                "output": "/tinymce/"
               }
             ],
             "styles": ["src/clients/client_A/assets/styles.scss"],
@@ -138,6 +143,11 @@
                 "glob": "**/*",
                 "input": "src/clients/client_B/assets",
                 "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/tinymce",
+                "output": "/tinymce/"
               }
             ],
             "styles": ["src/clients/client_B/assets/styles.scss"],
