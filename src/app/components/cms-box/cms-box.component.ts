@@ -7,6 +7,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -53,11 +54,24 @@ export class CmsBoxComponent implements OnDestroy {
   template: `
     <h1 mat-dialog-title>Dialog with elements</h1>
     <div mat-dialog-content>
-      This dialog showcases the title, close, content and actions elements.
+      <editor
+        [formControl]="text"
+        [init]="{ plugins: 'lists link image table code help wordcount' }"
+      ></editor>
     </div>
     <div mat-dialog-actions>
+      <button mat-button (click)="submitText()">Submit</button>
       <button mat-button mat-dialog-close>Close</button>
     </div>
   `,
 })
-export class DialogElementsExampleDialogComponent {}
+export class DialogElementsExampleDialogComponent {
+  text = new FormControl('');
+  public myForm = new FormGroup({
+    body: new FormControl('', Validators.required),
+  });
+
+  submitText(): void {
+    console.log(this.text.value);
+  }
+}
