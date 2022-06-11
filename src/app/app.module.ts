@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,29 +11,18 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatDialogModule } from '@angular/material/dialog';
-import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
+import { TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { ThemeIconComponent } from './svgs/theme-icon/theme-icon.component';
 import { ToolbarIconsComponent } from './toolbar-icons/toolbar-icons.component';
 import { ThemeService } from './services/theme.service';
-import {
-  CmsBoxComponent,
-  DialogElementsExampleDialogComponent,
-} from './components/cms-box/cms-box.component';
+import { CmsBoxModule } from './components/cms-box/cms-box.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ThemeIconComponent,
-    ToolbarIconsComponent,
-    CmsBoxComponent,
-    DialogElementsExampleDialogComponent,
-  ],
+  declarations: [AppComponent, ThemeIconComponent, ToolbarIconsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -42,8 +30,7 @@ import {
     MatListModule,
     MatMenuModule,
     MatRadioModule,
-    MatDialogModule,
-    EditorModule,
+    CmsBoxModule,
   ],
   providers: [
     ThemeService,
