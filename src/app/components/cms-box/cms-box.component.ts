@@ -58,9 +58,9 @@ export class CmsBoxComponent implements OnDestroy {
 }
 
 @Component({
-  selector: 'app-dialog-elements-example-dialog',
+  selector: 'app-cms-box-edit',
   template: `
-    <h1 mat-dialog-title>Dialog with elements</h1>
+    <h1 mat-dialog-title>Edit text</h1>
     <div mat-dialog-content>
       <editor
         [formControl]="text"
