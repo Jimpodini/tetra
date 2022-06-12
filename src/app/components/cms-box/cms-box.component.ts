@@ -47,7 +47,7 @@ export class CmsBoxComponent implements OnDestroy {
 
   editText(event: MouseEvent) {
     event.stopPropagation();
-    this.dialog.open(DialogElementsExampleDialogComponent);
+    this.dialog.open(CmxBoxEditComponent);
   }
 
   openDialog() {}
@@ -73,7 +73,7 @@ export class CmsBoxComponent implements OnDestroy {
     </div>
   `,
 })
-export class DialogElementsExampleDialogComponent {
+export class CmxBoxEditComponent {
   text = new FormControl('');
 
   constructor(private cmsBoxService: CmsBoxService) {}

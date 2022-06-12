@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  CmsBoxComponent,
-  DialogElementsExampleDialogComponent,
-} from './cms-box.component';
+import { CmsBoxComponent, CmxBoxEditComponent } from './cms-box.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [CmsBoxComponent, DialogElementsExampleDialogComponent],
+  declarations: [CmsBoxComponent, CmxBoxEditComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
