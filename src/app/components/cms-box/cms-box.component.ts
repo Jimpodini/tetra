@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { CmsBoxService } from './cms-box.service';
 
 @Component({
   selector: 'app-cms-box',
@@ -17,19 +18,27 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CmsBoxComponent implements OnDestroy {
   listenerFunction: () => void;
-  @ViewChild('textArea')
-  text: ElementRef | undefined;
   @HostListener('click') onClick() {
     this.editMode = true;
   }
   @HostBinding('class.editMode') editMode = false;
 
-  constructor(private renderer: Renderer2, public dialog: MatDialog) {
+  constructor(
+    private renderer: Renderer2,
+    public dialog: MatDialog,
+    public cmsBoxService: CmsBoxService,
+    private elRef: ElementRef
+  ) {
+    // Disable edit mode when clicking outside component
     this.listenerFunction = this.renderer.listen(
       'window',
       'click',
       (e: Event) => {
-        if (e.target !== this.text?.nativeElement) {
+        if (
+          (this.elRef.nativeElement as HTMLElement).contains(
+            e.target as HTMLElement
+          ) === false
+        ) {
           this.editMode = false;
         }
       }
@@ -39,7 +48,6 @@ export class CmsBoxComponent implements OnDestroy {
   editText(event: MouseEvent) {
     event.stopPropagation();
     this.dialog.open(DialogElementsExampleDialogComponent);
-    console.log(event);
   }
 
   openDialog() {}
@@ -60,18 +68,18 @@ export class CmsBoxComponent implements OnDestroy {
       ></editor>
     </div>
     <div mat-dialog-actions>
-      <button mat-button (click)="submitText()">Submit</button>
+      <button mat-button mat-dialog-close (click)="submitText()">Submit</button>
       <button mat-button mat-dialog-close>Close</button>
     </div>
   `,
 })
 export class DialogElementsExampleDialogComponent {
   text = new FormControl('');
-  public myForm = new FormGroup({
-    body: new FormControl('', Validators.required),
-  });
+
+  constructor(private cmsBoxService: CmsBoxService) {}
 
   submitText(): void {
     console.log(this.text.value);
+    this.cmsBoxService.text = this.text.value;
   }
 }
