@@ -8,9 +8,8 @@ describe('CmsBoxComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CmsBoxComponent ]
-    })
-    .compileComponents();
+      declarations: [CmsBoxComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
