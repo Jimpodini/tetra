@@ -5,11 +5,11 @@ import {
   HostListener,
   OnDestroy,
   Renderer2,
-  ViewChild,
 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CmsBoxService } from './cms-box.service';
+import { CMS_BOX_HISTORY_DATA } from './CMS_BOX_HISTORY_DATA';
 
 @Component({
   selector: 'app-cms-box',
@@ -50,7 +50,10 @@ export class CmsBoxComponent implements OnDestroy {
     this.dialog.open(CmxBoxEditComponent);
   }
 
-  openDialog() {}
+  showHistory(event: MouseEvent) {
+    event.stopPropagation();
+    this.dialog.open(CmxBoxHistoryComponent);
+  }
 
   ngOnDestroy(): void {
     this.listenerFunction();
@@ -68,7 +71,14 @@ export class CmsBoxComponent implements OnDestroy {
       ></editor>
     </div>
     <div mat-dialog-actions>
-      <button mat-button mat-dialog-close (click)="submitText()">Submit</button>
+      <button
+        color="primary"
+        mat-button
+        mat-dialog-close
+        (click)="submitText()"
+      >
+        Submit
+      </button>
       <button mat-button mat-dialog-close>Close</button>
     </div>
   `,
@@ -82,4 +92,29 @@ export class CmxBoxEditComponent {
     console.log(this.text.value);
     this.cmsBoxService.text = this.text.value;
   }
+}
+
+@Component({
+  selector: 'app-cms-box-history',
+  template: `
+    <h1 mat-dialog-title>History</h1>
+    <div mat-dialog-content>
+      <p *ngFor="let data of historyData">
+        {{ data.author }}
+      </p>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button mat-dialog-close>Close</button>
+    </div>
+  `,
+})
+export class CmxBoxHistoryComponent {
+  historyData = CMS_BOX_HISTORY_DATA;
+
+  constructor(private cmsBoxService: CmsBoxService) {}
+
+  // submitText(): void {
+  //   console.log(this.text.value);
+  //   this.cmsBoxService.text = this.text.value;
+  // }
 }

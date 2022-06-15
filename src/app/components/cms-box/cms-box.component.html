@@ -1,6 +1,6 @@
 <div class="textArea" [innerHtml]="cmsBoxService.text"></div>
 <div *ngIf="editMode" class="cms-buttons">
-  <button class="editButton drop-shadow-md p-5" (click)="editText($event)">
+  <button class="editButton drop-shadow-md p-5" (click)="showHistory($event)">
     <mat-icon>history</mat-icon>
   </button>
   <button class="editButton drop-shadow-md p-5" (click)="editText($event)">
