@@ -112,9 +112,4 @@ export class CmxBoxHistoryComponent {
   historyData = CMS_BOX_HISTORY_DATA;
 
   constructor(private cmsBoxService: CmsBoxService) {}
-
-  // submitText(): void {
-  //   console.log(this.text.value);
-  //   this.cmsBoxService.text = this.text.value;
-  // }
 }
