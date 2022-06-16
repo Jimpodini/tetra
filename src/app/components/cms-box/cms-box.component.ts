@@ -47,7 +47,9 @@ export class CmsBoxComponent implements OnDestroy {
 
   editText(event: MouseEvent) {
     event.stopPropagation();
-    this.dialog.open(CmxBoxEditComponent);
+    this.dialog.open(CmxBoxEditComponent, {
+      width: '652px',
+    });
   }
 
   showHistory(event: MouseEvent) {
