@@ -11,9 +11,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { CmsBoxService } from './cms-box.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SkeletonDirective } from 'src/app/core/skeleton-directive';
 
 @NgModule({
-  declarations: [CmsBoxComponent, CmxBoxEditComponent, CmxBoxHistoryComponent],
+  declarations: [
+    CmsBoxComponent,
+    CmxBoxEditComponent,
+    CmxBoxHistoryComponent,
+    SkeletonDirective,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

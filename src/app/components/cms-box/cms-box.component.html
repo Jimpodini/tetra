@@ -1,4 +1,8 @@
 <div class="textArea" [innerHtml]="cmsBoxService.text"></div>
+<div class="flex">
+  <p>Some data:</p>
+  <p *skeleton="true; height: '20px'; width: '200px'">tjena</p>
+</div>
 <div *ngIf="editMode" class="cms-buttons">
   <button class="editButton drop-shadow-md p-5" (click)="showHistory($event)">
     <mat-icon>history</mat-icon>
