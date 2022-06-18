@@ -1,4 +1,4 @@
-<div class="textArea" [innerHtml]="cmsBoxService.text"></div>
+<ng-content></ng-content>
 <div *ngIf="editMode" class="cms-buttons">
   <button class="editButton drop-shadow-md p-5" (click)="showHistory($event)">
     <mat-icon>history</mat-icon>
