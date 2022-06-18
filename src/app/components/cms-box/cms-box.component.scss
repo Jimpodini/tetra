@@ -9,7 +9,7 @@
   padding: 10px;
 }
 
-:host.editMode div.textArea {
+:host.editMode ::ng-deep div:first-child {
   border: 1px solid black;
   background-color: antiquewhite;
 }
