@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ThemeService } from '../services/theme.service';
 
 @Component({
@@ -6,8 +6,6 @@ import { ThemeService } from '../services/theme.service';
   templateUrl: './toolbar-icons.component.html',
   styleUrls: ['./toolbar-icons.component.scss'],
 })
-export class ToolbarIconsComponent implements OnInit {
+export class ToolbarIconsComponent {
   constructor(public themeService: ThemeService) {}
-
-  ngOnInit(): void {}
 }
