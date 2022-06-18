@@ -1,5 +1,7 @@
 import {
+  AfterContentInit,
   Component,
+  ContentChild,
   ElementRef,
   HostBinding,
   HostListener,
@@ -16,12 +18,14 @@ import { CMS_BOX_HISTORY_DATA } from './CMS_BOX_HISTORY_DATA';
   templateUrl: './cms-box.component.html',
   styleUrls: ['./cms-box.component.scss'],
 })
-export class CmsBoxComponent implements OnDestroy {
+export class CmsBoxComponent implements AfterContentInit, OnDestroy {
   listenerFunction: () => void;
   @HostListener('click') onClick() {
     this.editMode = true;
   }
   @HostBinding('class.editMode') editMode = false;
+  @ContentChild('cmsContent') ref!: ElementRef;
+  // TODO unsubsribe
 
   constructor(
     private renderer: Renderer2,
@@ -43,6 +47,12 @@ export class CmsBoxComponent implements OnDestroy {
         }
       }
     );
+  }
+
+  ngAfterContentInit(): void {
+    this.cmsBoxService.$content.subscribe((text) => {
+      this.ref.nativeElement.innerHTML = text;
+    });
   }
 
   editText(event: MouseEvent) {
@@ -91,7 +101,6 @@ export class CmxBoxEditComponent {
   constructor(private cmsBoxService: CmsBoxService) {}
 
   submitText(): void {
-    console.log(this.text.value);
     this.cmsBoxService.text = this.text.value;
   }
 }
