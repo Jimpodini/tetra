@@ -110,9 +110,15 @@ export class CmxBoxEditComponent {
   template: `
     <h1 mat-dialog-title>History</h1>
     <div mat-dialog-content>
-      <p *ngFor="let data of historyData">
-        {{ data.author }}
-      </p>
+      <ng-container *ngFor="let data of cmsBoxService.historyData">
+        <span>{{ data.author }}</span
+        ><br />
+        <span
+          ><i>{{ data.date }}</i></span
+        >
+        <div class="mt-2" [innerHTML]="data.data"></div>
+        <hr class="mb-3 last:invisible" />
+      </ng-container>
     </div>
     <div mat-dialog-actions>
       <button mat-button mat-dialog-close>Close</button>
@@ -120,7 +126,5 @@ export class CmxBoxEditComponent {
   `,
 })
 export class CmxBoxHistoryComponent {
-  historyData = CMS_BOX_HISTORY_DATA;
-
-  constructor(private cmsBoxService: CmsBoxService) {}
+  constructor(public cmsBoxService: CmsBoxService) {}
 }
