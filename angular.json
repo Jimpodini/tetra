@@ -39,7 +39,10 @@
                 "output": "/tinymce/"
               }
             ],
-            "styles": ["src/clients/client_A/assets/styles.scss"],
+            "styles": [
+              "src/assets/global-styles.scss",
+              "src/clients/client_A/assets/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -102,7 +105,10 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/clients/client_A/assets"],
-            "styles": ["src/clients/client_A/assets/styles.scss"],
+            "styles": [
+              "src/assets/global-styles.scss",
+              "src/clients/client_A/assets/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -150,7 +156,10 @@
                 "output": "/tinymce/"
               }
             ],
-            "styles": ["src/clients/client_B/assets/styles.scss"],
+            "styles": [
+              "src/assets/global-styles.scss",
+              "src/clients/client_B/assets/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -213,7 +222,10 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/clients/client_B/assets"],
-            "styles": ["src/clients/client_B/assets/styles.scss"],
+            "styles": [
+              "src/assets/global-styles.scss",
+              "src/clients/client_B/assets/styles.scss"
+            ],
             "scripts": []
           }
         },
