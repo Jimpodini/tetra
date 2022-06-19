@@ -49,13 +49,9 @@
       class="p-5"
       [ngStyle]="{ marginTop: mobileQuery.matches ? '56px' : '0px' }"
     >
-      <h1 class="text-3xl font-bold underline">Hello world!!</h1>
+      <h1 class="text-3xl font-bold">CMS box</h1>
       <app-cms-box>
-        <div
-          #cmsContent
-          class="rounded-lg p-5"
-          style="border: 1px solid black; height: 300px"
-        ></div>
+        <mat-card #cmsContent></mat-card>
       </app-cms-box>
       <app-toolbar-icons
         *ngIf="!mobileQuery.matches"

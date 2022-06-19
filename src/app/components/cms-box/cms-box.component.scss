@@ -2,8 +2,7 @@
   position: relative;
 }
 
-:host.editMode ::ng-deep div:first-child {
-  border: 1px solid black;
+::ng-deep .editMode mat-card {
   background-color: antiquewhite;
 }
 

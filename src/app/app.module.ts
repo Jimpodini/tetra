@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 import { TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { ThemeIconComponent } from './svgs/theme-icon/theme-icon.component';
 import { ToolbarIconsComponent } from './toolbar-icons/toolbar-icons.component';
@@ -30,6 +31,7 @@ import { CmsBoxModule } from './components/cms-box/cms-box.module';
     MatListModule,
     MatMenuModule,
     MatRadioModule,
+    MatCardModule,
     CmsBoxModule,
   ],
   providers: [

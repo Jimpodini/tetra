@@ -6,6 +6,7 @@ import {
   HostBinding,
   HostListener,
   OnDestroy,
+  OnInit,
   Renderer2,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -24,7 +25,7 @@ export class CmsBoxComponent implements AfterContentInit, OnDestroy {
     this.editMode = true;
   }
   @HostBinding('class.editMode') editMode = false;
-  @ContentChild('cmsContent') ref!: ElementRef;
+  @ContentChild('cmsContent', { read: ElementRef }) ref!: ElementRef;
   // TODO unsubsribe
 
   constructor(
@@ -95,10 +96,18 @@ export class CmsBoxComponent implements AfterContentInit, OnDestroy {
     </div>
   `,
 })
-export class CmxBoxEditComponent {
+export class CmxBoxEditComponent implements OnInit {
   text = new FormControl('');
 
   constructor(private cmsBoxService: CmsBoxService) {}
+
+  // TODO
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.text.setValue(this.cmsBoxService.text);
+      console.log('hej');
+    }, 2000);
+  }
 
   submitText(): void {
     this.cmsBoxService.text = this.text.value;
