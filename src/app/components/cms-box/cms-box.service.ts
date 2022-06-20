@@ -6,7 +6,7 @@ import { CMS_BOX_HISTORY_DATA } from './CMS_BOX_HISTORY_DATA';
 export class CmsBoxService {
   historyData = CMS_BOX_HISTORY_DATA;
 
-  private contentSubject = new BehaviorSubject<string>('Starting text');
+  private contentSubject = new BehaviorSubject<string>('<p>Starting text</p>');
   $content = this.contentSubject.asObservable();
 
   set text(text: string) {
