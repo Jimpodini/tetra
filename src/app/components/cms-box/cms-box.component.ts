@@ -1,5 +1,7 @@
 import {
   AfterContentInit,
+  AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ContentChild,
   ElementRef,
@@ -8,9 +10,12 @@ import {
   OnDestroy,
   OnInit,
   Renderer2,
+  ViewChild,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { EditorComponent } from '@tinymce/tinymce-angular';
+import { pipe, takeLast } from 'rxjs';
 import { CmsBoxService } from './cms-box.service';
 import { CMS_BOX_HISTORY_DATA } from './CMS_BOX_HISTORY_DATA';
 
@@ -77,10 +82,16 @@ export class CmsBoxComponent implements AfterContentInit, OnDestroy {
   selector: 'app-cms-box-edit',
   template: `
     <h1 mat-dialog-title>Edit text</h1>
-    <div mat-dialog-content>
+    <div
+      mat-dialog-content
+      [ngStyle]="{ overflow: loading ? 'hidden' : 'auto' }"
+    >
+      <div *ngIf="loading" class="loadingPlaceholder"></div>
       <editor
         [formControl]="text"
         [init]="{ plugins: 'lists link image table code help wordcount' }"
+        (onInit)="loading = false"
+        [ngStyle]="{ height: loading ? '0px' : '100%' }"
       ></editor>
     </div>
     <div mat-dialog-actions>
@@ -95,18 +106,41 @@ export class CmsBoxComponent implements AfterContentInit, OnDestroy {
       <button mat-button mat-dialog-close>Close</button>
     </div>
   `,
+  styles: [
+    `
+      .loadingPlaceholder {
+        width: 604px;
+        height: 400px;
+        background-color: lightgray;
+        border-radius: 10px;
+        animation: pulse 1s infinite ease-in-out;
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 50%;
+        }
+        50% {
+          opacity: 100%;
+        }
+        100% {
+          opacity: 50%;
+        }
+      }
+    `,
+  ],
 })
 export class CmxBoxEditComponent implements OnInit {
   text = new FormControl('');
+  loading = true;
 
   constructor(private cmsBoxService: CmsBoxService) {}
 
   // TODO
   ngOnInit(): void {
-    setTimeout(() => {
-      this.text.setValue(this.cmsBoxService.text);
-      console.log('hej');
-    }, 2000);
+    this.cmsBoxService.$content.subscribe((text) => {
+      this.text.setValue(text);
+    });
   }
 
   submitText(): void {
