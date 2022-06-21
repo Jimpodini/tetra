@@ -15,10 +15,10 @@ import {
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { EditorComponent } from '@tinymce/tinymce-angular';
-import { pipe, takeLast } from 'rxjs';
+import { pipe, Subject, take } from 'rxjs';
 import { CmsBoxService } from './cms-box.service';
 import { CMS_BOX_HISTORY_DATA } from './CMS_BOX_HISTORY_DATA';
-
+// TODO remove unused imports
 @Component({
   selector: 'app-cms-box',
   templateUrl: './cms-box.component.html',
@@ -130,21 +130,27 @@ export class CmsBoxComponent implements AfterContentInit, OnDestroy {
     `,
   ],
 })
-export class CmxBoxEditComponent implements OnInit {
+export class CmxBoxEditComponent implements OnInit, OnDestroy {
   text = new FormControl('');
   loading = true;
+  unsubscribe = new Subject<void>();
 
   constructor(private cmsBoxService: CmsBoxService) {}
 
   // TODO
   ngOnInit(): void {
-    this.cmsBoxService.$content.subscribe((text) => {
+    this.cmsBoxService.$content.pipe(take(1)).subscribe((text) => {
       this.text.setValue(text);
     });
   }
 
   submitText(): void {
     this.cmsBoxService.text = this.text.value;
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }
 
