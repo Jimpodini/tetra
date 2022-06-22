@@ -137,7 +137,6 @@ export class CmxBoxEditComponent implements OnInit, OnDestroy {
 
   constructor(private cmsBoxService: CmsBoxService) {}
 
-  // TODO
   ngOnInit(): void {
     this.cmsBoxService.$content.pipe(take(1)).subscribe((text) => {
       this.text.setValue(text);
