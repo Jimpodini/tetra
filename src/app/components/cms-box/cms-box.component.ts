@@ -15,7 +15,7 @@ import {
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { EditorComponent } from '@tinymce/tinymce-angular';
-import { pipe, Subject, take } from 'rxjs';
+import { pipe, Subject, take, takeUntil } from 'rxjs';
 import { CmsBoxService } from './cms-box.service';
 import { CMS_BOX_HISTORY_DATA } from './CMS_BOX_HISTORY_DATA';
 // TODO remove unused imports
@@ -138,9 +138,11 @@ export class CmxBoxEditComponent implements OnInit, OnDestroy {
   constructor(private cmsBoxService: CmsBoxService) {}
 
   ngOnInit(): void {
-    this.cmsBoxService.$content.pipe(take(1)).subscribe((text) => {
-      this.text.setValue(text);
-    });
+    this.cmsBoxService.$content
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((text) => {
+        this.text.setValue(text);
+      });
   }
 
   submitText(): void {
